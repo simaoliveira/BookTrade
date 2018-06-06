@@ -14,14 +14,15 @@ namespace BookTrade.Migrations
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(BookTrade.Models.ApplicationDbContext context) {
+        protected override void Seed(BookTrade.Models.ApplicationDbContext context)
+        {
             var autor = new List<Autor> {
                 new Autor {Id=1,Nome="Paulo Duarte", DataNasc=new DateTime(1979,03,14),Descricao="Paulo Duarte, sj. (1979 - Portimão) - Jesuíta, padre, coordenador da pastoral e professor no Colégio das Caldinhas (Sto. Tirso). São muitas as pessoas que acompanha diariamente: em aulas, em conversas, em celebração de missa e reconciliação. ¿A presença nas redes sociais e ocasionalmente em programas televisivos permite uma comunicação¿ ampla com a sociedade atual."},
                 new Autor {Id=2,Nome="Raul Minh'alma", DataNasc=new DateTime(1992,05,14),Descricao="Nasceu em 1992, é natural do Marco de Canaveses, formado em Engenharia Mecânica na Faculdade de Engenharia da Universidade do Porto. Começou a escrever poesia com dezassete anos e em 2011 lança o seu primeiro livro de poemas com o título"},
                 new Autor {Id=3,Nome="Heather Morris", DataNasc=new DateTime(1953,07,20),Descricao="Heather Morris nasceu na Nova Zelândia e reside atualmente na Austrália. Durante vários anos, enquanto trabalhava num hospital público em Melbourne, estudou e escreveu argumentos para cinema. "},
                 new Autor {Id=4,Nome="Helena Sacadura Cabral", DataNasc=new DateTime(1950,10,03),Descricao="Além de colunista de diversos jornais e revistas, mantém colaboração regular em televisão. Autora de duas dezenas de livros, concilia ainda a participação activa com a atualização dos seus quatros blogues."},
                 new Autor {Id=5,Nome="Lars Kepler", DataNasc=new DateTime(1960,03,20),Descricao="Lars Kepler é o pseudónimo de uma dupla de escritores de sucesso na Suécia: Alexander Ahndoril e Alexandra Coelho Ahndoril. O Hipnotista, primeiro volume da saga, alcançou um enorme sucesso internacional e foi adaptado ao cinema pela mão do realizador Lasse Hallström"},
-                new Autor {Id=6,Nome="Herberto Helder", DataNasc=new DateTime(1080,04,30),Descricao="Herberto Helder nasceu em 1930 no Funchal, onde concluiu o 5.º ano. Em 1948 matriculou-se em Direito mas cedo abandonou esse curso para se inscrever em Filologia Românica, que frequentou durante três anos. Teve inúmeros trabalhos e colaborou em vários periódicos como A Briosa"},
+                new Autor {Id=6,Nome="Herberto Helder", DataNasc=new DateTime(1980,04,30),Descricao="Herberto Helder nasceu em 1930 no Funchal, onde concluiu o 5.º ano. Em 1948 matriculou-se em Direito mas cedo abandonou esse curso para se inscrever em Filologia Românica, que frequentou durante três anos. Teve inúmeros trabalhos e colaborou em vários periódicos como A Briosa"},
             };
             autor.ForEach(dd => context.Autor.AddOrUpdate(d => d.Nome, dd));
             context.SaveChanges();
@@ -37,17 +38,6 @@ namespace BookTrade.Migrations
             categ.ForEach(dd => context.Categorias.AddOrUpdate(d => d.Nome, dd));
             context.SaveChanges();
 
-            var coment = new List<Comentarios> {
-                new Comentarios {Id=1,Texto="Adoro! Muito Emocionante",Data=new DateTime(2016,10,03),LivroId=3,UtilizadorId=1},
-                new Comentarios {Id=2,Texto="Muito Bom, recomendo!",Data=new DateTime(2017,03,10),LivroId=4,UtilizadorId=5},
-                new Comentarios {Id=3,Texto="5 estrelas, Fantastico",Data=new DateTime(2018,01,26),LivroId=1,UtilizadorId=3},
-                new Comentarios {Id=4,Texto="Ficou um pouco áquem das expectativas",Data=new DateTime(2017,12,06),LivroId=2,UtilizadorId=6},
-                new Comentarios {Id=5,Texto="bom mas tedioso",Data=new DateTime(2016,05,15),LivroId=6,UtilizadorId=4},
-                new Comentarios {Id=6,Texto="Teve um bom inicio mas um péssimo final",Data=new DateTime(2017,11,17),LivroId=5,UtilizadorId=2},
-            };
-            coment.ForEach(dd => context.Comentarios.AddOrUpdate(d => d.Texto, dd));
-            context.SaveChanges();
-
             var livro = new List<Livro> {
                 new Livro {Id=1,Titulo="O Caçador",Sinopse="A noite tinha acabado de cair, quando Sofia entra numa mansão nos arredores de Estocolmo, onde o seu cliente - um homem muito abastado que nunca viu - a espera. Talvez seja por isso que Sofia avança furtivamente, como um animal selvagem.",AnoLanc=2018,Editora="Porto Editora",Idioma="Português",NumeroDePaginas=568,AutorId=5},
                 new Livro {Id=2,Titulo="Uma Certa Forma de Vida",Sinopse="Neste livro, a autora começa por abordar temas que marcam a vida moderna, mas que a podem transformar negativamente, se não estivermos atentos. ",AnoLanc=2018,Editora="Clube do Autor",Idioma="Portugues",NumeroDePaginas=184,AutorId=4},
@@ -60,14 +50,25 @@ namespace BookTrade.Migrations
             context.SaveChanges();
 
             var user = new List<Utilizador> {
-                new Utilizador {Id=1,UserName="simaoliveira",DataNasc=new DateTime(1996,10,02),email="simaoliveira@ipt.pt",NomeCompleto="Simao Pedro De Oliveira Moleiro"},
-                new Utilizador {Id=2,UserName="rafandreg",DataNasc=new DateTime(1996,05,03),email="rafandreg@ipt.pt",NomeCompleto="Rafael Andre Campos Goncalves"},
-                new Utilizador {Id=3,UserName="tixinha",DataNasc=new DateTime(1995,10,02),email="tixinha@ipt.pt",NomeCompleto="Patricia Sofia Magalhaes Faustino"},
-                new Utilizador {Id=4,UserName="bokica",DataNasc=new DateTime(1995,07,02),email="bokica@ipt.pt",NomeCompleto="Beatriz Bangura da Silva Okica de Sa"},
-                new Utilizador {Id=5,UserName="cmartins",DataNasc=new DateTime(1999,06,16),email="cmartins@ipt.pt",NomeCompleto="Claudia Marisa Ferreira Martins"},
-                new Utilizador {Id=6,UserName="sdias",DataNasc=new DateTime(1992,05,18),email="sdias@ipt.pt",NomeCompleto="Ana Sofia Mendes Dias"},
+                new Utilizador {Id=1,UserName="simaoliveira",DataNasc=new DateTime(1996,10,02),Email="simaoliveira@ipt.pt",NomeCompleto="Simao Pedro De Oliveira Moleiro"},
+                new Utilizador {Id=2,UserName="rafandreg",DataNasc=new DateTime(1996,05,03),Email="rafandreg@ipt.pt",NomeCompleto="Rafael Andre Campos Goncalves"},
+                new Utilizador {Id=3,UserName="tixinha",DataNasc=new DateTime(1995,10,02),Email="tixinha@ipt.pt",NomeCompleto="Patricia Sofia Magalhaes Faustino"},
+                new Utilizador {Id=4,UserName="bokica",DataNasc=new DateTime(1995,07,02),Email="bokica@ipt.pt",NomeCompleto="Beatriz Bangura da Silva Okica de Sa"},
+                new Utilizador {Id=5,UserName="cmartins",DataNasc=new DateTime(1999,06,16),Email="cmartins@ipt.pt",NomeCompleto="Claudia Marisa Ferreira Martins"},
+                new Utilizador {Id=6,UserName="sdias",DataNasc=new DateTime(1992,05,18),Email="sdias@ipt.pt",NomeCompleto="Ana Sofia Mendes Dias"},
             };
             user.ForEach(dd => context.Utilizador.AddOrUpdate(d => d.UserName, dd));
+            context.SaveChanges();
+
+            var coment = new List<Comentarios> {
+                new Comentarios {Id=1,Texto="Adoro! Muito Emocionante",Data=new DateTime(2016,10,03),LivroId=3,UtilizadorId=1},
+                new Comentarios {Id=2,Texto="Muito Bom, recomendo!",Data=new DateTime(2017,03,10),LivroId=4,UtilizadorId=5},
+                new Comentarios {Id=3,Texto="5 estrelas, Fantastico",Data=new DateTime(2018,01,26),LivroId=1,UtilizadorId=3},
+                new Comentarios {Id=4,Texto="Ficou um pouco áquem das expectativas",Data=new DateTime(2017,12,06),LivroId=2,UtilizadorId=6},
+                new Comentarios {Id=5,Texto="bom mas tedioso",Data=new DateTime(2016,05,15),LivroId=6,UtilizadorId=4},
+                new Comentarios {Id=6,Texto="Teve um bom inicio mas um péssimo final",Data=new DateTime(2017,11,17),LivroId=5,UtilizadorId=2},
+            };
+            coment.ForEach(dd => context.Comentarios.AddOrUpdate(d => d.Texto, dd));
             context.SaveChanges();
         }
     }

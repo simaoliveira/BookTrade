@@ -6,7 +6,6 @@ namespace BookTrade.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Autor")]
     public partial class Autor
     {
         public Autor()

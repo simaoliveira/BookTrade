@@ -1,0 +1,74 @@
+﻿@model BookTrade.Models.Livro
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Livro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Autores.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Autores.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sinopse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sinopse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnoLanc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnoLanc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Editora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Editora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Idioma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Idioma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroDePaginas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroDePaginas)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

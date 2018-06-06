@@ -6,7 +6,6 @@ namespace BookTrade.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Livro")]
     public partial class Livro
     {
         public Livro()
@@ -21,6 +20,7 @@ namespace BookTrade.Models
         public string Titulo { get; set; }
 
         [Required]
+        [DataType(DataType.Text)]
         public string Sinopse { get; set; }
 
         public int AnoLanc { get; set; }

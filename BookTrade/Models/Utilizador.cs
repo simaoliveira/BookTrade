@@ -6,7 +6,6 @@ namespace BookTrade.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Utilizador")]
     public partial class Utilizador
     {
         public Utilizador()
@@ -28,9 +27,7 @@ namespace BookTrade.Models
 
         [Required]
         [StringLength(20)]
-        public string email { get; set; }
-
-
+        public string Email { get; set; }
 
         public virtual ICollection<Comentarios> Comentarios { get; set; }
     }
