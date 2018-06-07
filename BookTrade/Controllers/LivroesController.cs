@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -48,7 +49,7 @@ namespace BookTrade.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,Editora,Idioma,NumeroDePaginas,AutorId")] Livro livro)
+        public ActionResult Create([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,Editora,Idioma,NumeroDePaginas,AutorId,Fotografia")] Livro livro, HttpPostedFileBase uploadFotografia)
         {
             if (ModelState.IsValid)
             {
@@ -56,8 +57,33 @@ namespace BookTrade.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            // especificar (escolher) o nome do ficheiro
+            string nomeImagem = "Livro_" + livro + ".jpg";
 
-            ViewBag.AutorId = new SelectList(db.Autor, "Id", "Nome", livro.AutorId);
+            // var. auxiliar
+            string path = "";
+            // validar se a imagem foi fornecida
+            if (uploadFotografia != null) {
+                // o ficheiro foi fornecido
+                // validar se o q foi fornecido é uma imagem ----> fazer em casa
+                // formatar o tamanho da imagem
+
+                // criar o caminho completo até ao sítio onde o ficheiro
+                // será guardado
+                path = Path.Combine(Server.MapPath("~/imagens/"), nomeImagem);
+
+                // guardar o nome do ficheiro na BD
+                livro.Fotografia = nomeImagem;
+            } else {
+                // não foi fornecido qq ficheiro
+                // gerar uma mensagem de erro
+                ModelState.AddModelError("", "Não foi fornecida uma imagem...");
+                // devolver o controlo à View
+                return View(livro);
+            }
+
+
+            ViewBag.AutorId = new SelectList(db.Autor, "Id", "Nome", livro.AutorId, "Fotografia");
             return View(livro);
         }
 
@@ -73,7 +99,7 @@ namespace BookTrade.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AutorId = new SelectList(db.Autor, "Id", "Nome", livro.AutorId);
+            ViewBag.AutorId = new SelectList(db.Autor, "Id", "Nome", livro.AutorId,"Fotografia");
             return View(livro);
         }
 
@@ -82,7 +108,7 @@ namespace BookTrade.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,Editora,Idioma,NumeroDePaginas,AutorId")] Livro livro)
+        public ActionResult Edit([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,Editora,Idioma,NumeroDePaginas,AutorId,Fotografia")] Livro livro)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +116,7 @@ namespace BookTrade.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AutorId = new SelectList(db.Autor, "Id", "Nome", livro.AutorId);
+            ViewBag.AutorId = new SelectList(db.Autor, "Id", "Nome", livro.AutorId,"Fotografia");
             return View(livro);
         }
 

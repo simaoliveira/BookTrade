@@ -24,6 +24,8 @@ namespace BookTrade.Models
 
         public string Descricao { get; set; }
 
+        public string Fotografia { get; set; }
+
         public virtual ICollection<Livro> Livros { get; set; }
     }
 }

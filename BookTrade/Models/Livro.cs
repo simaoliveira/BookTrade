@@ -33,8 +33,11 @@ namespace BookTrade.Models
 
         public int NumeroDePaginas { get; set; }
 
+
         [ForeignKey("Autores")]
         public int AutorId { get; set; }
+
+        public string Fotografia { get; set; }
 
         public virtual Autor Autores { get; set; }
 
