@@ -3,39 +3,38 @@
 @{
     ViewBag.Title = "Details";
 }
+<table>
+    <tr>
+        <td>
+            <div>
+                <img src="~/imagens/@Html.DisplayFor(Model=> Model.Fotografia)"
+            </div>
+        </td>
+        <td>
+            <div>
 
-<h2>Details</h2>
 
-<div>
-    <h4>Autor</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
+                <div style="font-family:Arial; font-size:30px; color:blue; font-weight:bold; margin-top:35px; padding-left:100px;">
+                    @Html.DisplayFor(model => model.Nome)
+                </div>
+                <div style="font-family:Arial; font-size:20px; padding-left:100px;">
+                    Nasceu
+                    <b>
+                        @Html.DisplayFor(model => model.DataNasc)
+                    </b>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
+                </div>
+                <div style="font-family:Arial; font-size:20px; padding-left:100px; padding-top: 50px;">
+                    <b>Sinopse:</b>
+                    @Html.DisplayFor(model => model.Descricao)
+                </div>
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.DataNasc)
-        </dt>
+        </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.DataNasc)
-        </dd>
+    </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Descricao)
-        </dd>
-
-    </dl>
-</div>
+</table>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")

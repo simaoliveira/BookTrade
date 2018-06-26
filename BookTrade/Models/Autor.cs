@@ -19,9 +19,11 @@ namespace BookTrade.Models
 
         public string Nome { get; set; }
 
+        [Column(TypeName = "date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        public DateTime? DataNasc { get; set; }
 
-        public DateTime DataNasc { get; set; }
-
+        [DataType(DataType.Text)]
         public string Descricao { get; set; }
 
         public string Fotografia { get; set; }

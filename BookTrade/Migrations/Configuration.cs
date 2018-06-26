@@ -1,6 +1,8 @@
 namespace BookTrade.Migrations
 {
     using BookTrade.Models;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Collections.Generic;
     using System.Data.Entity;
@@ -16,6 +18,61 @@ namespace BookTrade.Migrations
 
         protected override void Seed(BookTrade.Models.ApplicationDbContext context)
         {
+
+            var user = new List<Utilizador> {
+                new Utilizador {Id=1,DataNasc=new DateTime(1996,10,02),Email="simaoliveira@ipt.pt",NomeCompleto="Simao Pedro De Oliveira Moleiro"},
+                new Utilizador {Id=2,DataNasc=new DateTime(1996,05,03),Email="rafandreg@ipt.pt",NomeCompleto="Rafael Andre Campos Goncalves"},
+                new Utilizador {Id=3,DataNasc=new DateTime(1995,10,02),Email="tixinha@ipt.pt",NomeCompleto="Patricia Sofia Magalhaes Faustino"},
+                new Utilizador {Id=4,DataNasc=new DateTime(1995,07,02),Email="bokica@ipt.pt",NomeCompleto="Beatriz Bangura da Silva Okica de Sa"},
+                new Utilizador {Id=5,DataNasc=new DateTime(1999,06,16),Email="cmartins@ipt.pt",NomeCompleto="Claudia Marisa Ferreira Martins"},
+                new Utilizador {Id=6,DataNasc=new DateTime(1992,05,18),Email="sdias@ipt.pt",NomeCompleto="Ana Sofia Mendes Dias"},
+            };
+            user.ForEach(dd => context.Utilizador.AddOrUpdate(d => d.Id, dd));
+            context.SaveChanges();
+
+
+            var storeR = new RoleStore<IdentityRole>(context);
+            var managerR = new RoleManager<IdentityRole>(storeR);
+
+            if (!context.Roles.Any(r => r.Name == "Admin")) {
+                var role = new IdentityRole { Name = "Admin" };
+
+                managerR.Create(role);
+            }
+            if (!context.Roles.Any(r => r.Name == "Viewer")) {
+                var role = new IdentityRole { Name = "Viewer" };
+
+                managerR.Create(role);
+            }
+
+            /////////////////////////// USERS ///////////////////////////////////
+            var store = new UserStore<ApplicationUser>(context);
+            var manager = new UserManager<ApplicationUser>(store);
+            /////////////////////////// ADMIN ///////////////////////////////////
+            var us = user[0];
+            if (!context.Users.Any(u => u.UserName == us.Email)) {
+                var u = new ApplicationUser {
+                    UserName = us.Email,
+                    Email = us.Email
+                };
+
+                manager.Create(u, "123qweQWE#");
+                manager.AddToRole(u.Id, "Admin");
+            }
+
+            for (int i = 1; i < user.Count(); i++) {
+                var us2 = user[i];
+                if (!context.Users.Any(u => u.UserName == us2.Email)) {
+                    var u = new ApplicationUser {
+                        UserName = us2.Email,
+                        Email = us2.Email
+                    };
+
+                    manager.Create(u, "123qweQWE#");
+                    manager.AddToRole(u.Id, "Viewer");
+                }
+            }
+
             var autor = new List<Autor> {
                 new Autor {Id=1,Nome="Paulo Duarte", DataNasc=new DateTime(1979,03,14),Descricao="Paulo Duarte, sj. (1979 - Portimão) - Jesuíta, padre, coordenador da pastoral e professor no Colégio das Caldinhas (Sto. Tirso). São muitas as pessoas que acompanha diariamente: em aulas, em conversas, em celebração de missa e reconciliação. ¿A presença nas redes sociais e ocasionalmente em programas televisivos permite uma comunicação¿ ampla com a sociedade atual.",Fotografia="pauloduarte.jpg"},
                 new Autor {Id=2,Nome="Raul Minh'alma", DataNasc=new DateTime(1992,05,14),Descricao="Nasceu em 1992, é natural do Marco de Canaveses, formado em Engenharia Mecânica na Faculdade de Engenharia da Universidade do Porto. Começou a escrever poesia com dezassete anos e em 2011 lança o seu primeiro livro de poemas com o título",Fotografia="raulminhalma.jpg"},
@@ -47,17 +104,6 @@ namespace BookTrade.Migrations
                 new Livro {Id=6,Titulo="Deus Como Tu",Sinopse="Deus Como Tu conduz-nos num regresso à fé, humana, vivida no quotidiano, e coloca-nos questões que nos fazem a pensar em temas como a morte, a culpa, a solidão, mas também, o riso, a alegria e a liberdade.",AnoLanc=2018,Editora="Matéria Prima",Idioma="Portugues",NumeroDePaginas=168,AutorId=1,Fotografia="deuscomotu.jpg"},
             };
             livro.ForEach(dd => context.Livro.AddOrUpdate(d => d.Titulo, dd));
-            context.SaveChanges();
-
-            var user = new List<Utilizador> {
-                new Utilizador {Id=1,UserName="simaoliveira",DataNasc=new DateTime(1996,10,02),Email="simaoliveira@ipt.pt",NomeCompleto="Simao Pedro De Oliveira Moleiro"},
-                new Utilizador {Id=2,UserName="rafandreg",DataNasc=new DateTime(1996,05,03),Email="rafandreg@ipt.pt",NomeCompleto="Rafael Andre Campos Goncalves"},
-                new Utilizador {Id=3,UserName="tixinha",DataNasc=new DateTime(1995,10,02),Email="tixinha@ipt.pt",NomeCompleto="Patricia Sofia Magalhaes Faustino"},
-                new Utilizador {Id=4,UserName="bokica",DataNasc=new DateTime(1995,07,02),Email="bokica@ipt.pt",NomeCompleto="Beatriz Bangura da Silva Okica de Sa"},
-                new Utilizador {Id=5,UserName="cmartins",DataNasc=new DateTime(1999,06,16),Email="cmartins@ipt.pt",NomeCompleto="Claudia Marisa Ferreira Martins"},
-                new Utilizador {Id=6,UserName="sdias",DataNasc=new DateTime(1992,05,18),Email="sdias@ipt.pt",NomeCompleto="Ana Sofia Mendes Dias"},
-            };
-            user.ForEach(dd => context.Utilizador.AddOrUpdate(d => d.UserName, dd));
             context.SaveChanges();
 
             var coment = new List<Comentarios> {

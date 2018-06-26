@@ -1,0 +1,50 @@
+﻿@model BookTrade.Models.Comentarios
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Comentarios</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Livros.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Livros.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Utilizadores.NomeCompleto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Utilizadores.NomeCompleto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Texto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Texto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

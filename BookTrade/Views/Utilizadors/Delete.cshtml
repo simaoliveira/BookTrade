@@ -1,4 +1,4 @@
-﻿@model BookTrade.Models.Autor
+﻿@model BookTrade.Models.Utilizador
 
 @{
     ViewBag.Title = "Delete";
@@ -8,15 +8,16 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Autor</h4>
+    <h4>Utilizador</h4>
     <hr />
     <dl class="dl-horizontal">
+
         <dt>
-            @Html.DisplayNameFor(model => model.Nome)
+            @Html.DisplayNameFor(model => model.NomeCompleto)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nome)
+            @Html.DisplayFor(model => model.NomeCompleto)
         </dd>
 
         <dt>
@@ -28,18 +29,13 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Descricao)
+            @Html.DisplayNameFor(model => model.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Descricao)
+            @Html.DisplayFor(model => model.Email)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Fotografia)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Fotografia)
-        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {

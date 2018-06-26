@@ -16,18 +16,18 @@ namespace BookTrade.Models
         public int Id { get; set; }
 
         [Required]
-        public string UserName { get; set; }
-
-        [Required]
         [StringLength(50)]
         public string NomeCompleto { get; set; }
 
         [Column(TypeName = "date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode =true)]
         public DateTime DataNasc { get; set; }
 
         [Required]
         [StringLength(20)]
         public string Email { get; set; }
+
+        public string Fotografia { get; set; }
 
         public virtual ICollection<Comentarios> Comentarios { get; set; }
     }

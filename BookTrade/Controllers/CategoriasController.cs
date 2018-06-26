@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -11,69 +10,57 @@ using BookTrade.Models;
 
 namespace BookTrade.Controllers
 {
-    public class LivroesController : Controller
+    public class CategoriasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Livroes
+        // GET: Categorias
         public ActionResult Index()
         {
-            var livro = db.Livro.Include(l => l.Autores);
-            return View(livro.ToList());
+            return View(db.Categorias.ToList());
         }
 
-        // GET: Livroes/Details/5
+        // GET: Categorias/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Livro livro = db.Livro.Find(id);
-            if (livro == null)
+            Categorias categorias = db.Categorias.Find(id);
+            if (categorias == null)
             {
                 return HttpNotFound();
             }
-            return View(livro);
+            return View(categorias);
         }
 
-        // GET: Livroes/Create
+        // GET: Categorias/Create
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
-            ViewBag.AutorId = new SelectList(db.Autor, "Id", "Nome");
-            ViewBag.Categorias = new SelectList(db.Categorias, "Id", "Nome");
             return View();
         }
 
-        // POST: Livroes/Create
+        // POST: Categorias/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Create([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,Editora,Idioma,NumeroDePaginas,AutorId,Fotografia")] Livro livro, HttpPostedFileBase Fotografia, List<int> Categorias)
+        public ActionResult Create([Bind(Include = "Id,Nome")] Categorias categorias)
         {
-            if(Fotografia != null)
-            {
-                livro.Fotografia = Fotografia.FileName;
-            }
             if (ModelState.IsValid)
             {
-                db.Livro.Add(livro);
-                IQueryable<Categorias> temp2 = db.Categorias.Where(a => Categorias.Any(aa => a.Id == aa));
-                livro.Categorias = temp2.ToList();
+                db.Categorias.Add(categorias);
                 db.SaveChanges();
-                Fotografia.SaveAs(Path.Combine(Server.MapPath("~/imagens/" + Fotografia.FileName)));
                 return RedirectToAction("Index");
             }
 
-
-            ViewBag.AutorId = new SelectList(db.Autor, "Id", "Nome", livro.AutorId);
-            return View(livro);
+            return View(categorias);
         }
 
-        // GET: Livroes/Edit/5
+        // GET: Categorias/Edit/5
         [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
@@ -81,34 +68,32 @@ namespace BookTrade.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Livro livro = db.Livro.Find(id);
-            if (livro == null)
+            Categorias categorias = db.Categorias.Find(id);
+            if (categorias == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.AutorId = new SelectList(db.Autor, "Id", "Nome", livro.AutorId,"Fotografia");
-            return View(livro);
+            return View(categorias);
         }
 
-        // POST: Livroes/Edit/5
+        // POST: Categorias/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,Editora,Idioma,NumeroDePaginas,AutorId,Fotografia")] Livro livro)
+        public ActionResult Edit([Bind(Include = "Id,Nome")] Categorias categorias)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(livro).State = EntityState.Modified;
+                db.Entry(categorias).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AutorId = new SelectList(db.Autor, "Id", "Nome", livro.AutorId,"Fotografia");
-            return View(livro);
+            return View(categorias);
         }
 
-        // GET: Livroes/Delete/5
+        // GET: Categorias/Delete/5
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
@@ -116,23 +101,22 @@ namespace BookTrade.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Livro livro = db.Livro.Find(id);
-            if (livro == null)
+            Categorias categorias = db.Categorias.Find(id);
+            if (categorias == null)
             {
                 return HttpNotFound();
             }
-            return View(livro);
+            return View(categorias);
         }
 
-        // POST: Livroes/Delete/5
+        // POST: Categorias/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Livro livro = db.Livro.Find(id);
-            livro.Categorias.Clear();
-            db.Livro.Remove(livro);
+            Categorias categorias = db.Categorias.Find(id);
+            db.Categorias.Remove(categorias);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
