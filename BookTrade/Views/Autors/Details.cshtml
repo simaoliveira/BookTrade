@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Details";
 }
-<table>
+<table style="margin-top: 50px;">
     <tr>
         <td>
             <div>
@@ -12,7 +12,6 @@
         </td>
         <td>
             <div>
-
 
                 <div style="font-family:Arial; font-size:30px; color:blue; font-weight:bold; margin-top:35px; padding-left:100px;">
                     @Html.DisplayFor(model => model.Nome)
@@ -24,8 +23,8 @@
                     </b>
 
                 </div>
-                <div style="font-family:Arial; font-size:20px; padding-left:100px; padding-top: 50px;">
-                    <b>Sinopse:</b>
+                <div style="font-family:Arial; font-size:20px; padding-left:100px; padding-top: 50px; text-align:justify;">
+                    <b>Sinopse</b></br>
                     @Html.DisplayFor(model => model.Descricao)
                 </div>
             </div>
@@ -36,6 +35,6 @@
 
 </table>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar à Lista", "Index")
 </p>

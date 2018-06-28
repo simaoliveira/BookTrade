@@ -13,6 +13,7 @@ namespace BookTrade.Models
             Comentarios = new HashSet<Comentarios>();
             Categorias = new HashSet<Categorias>();
         }
+        //Chave Primária
         [Key]
         public int Id { get; set; }
 
@@ -33,16 +34,19 @@ namespace BookTrade.Models
 
         public int NumeroDePaginas { get; set; }
 
-
+        //Chave forasteira da tabela Livro
         [ForeignKey("Autores")]
+        [Display(Name = "Autor")]
         public int AutorId { get; set; }
 
         public string Fotografia { get; set; }
 
         public virtual Autor Autores { get; set; }
 
+        //Especifica que um Livro pode ter vários Comentários
         public virtual ICollection<Comentarios> Comentarios { get; set; }
 
+        //Especifica que um Livro pode ter várias Categorias
         public virtual ICollection<Categorias> Categorias { get; set; }
     }
 }

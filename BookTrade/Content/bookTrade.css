@@ -1,8 +1,8 @@
-﻿.logo{
-    font-family:'Comic Sans MS';
-    font-size:30px;
-    color:black;
-    background-color:pink;
+﻿
+.init {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .infom{

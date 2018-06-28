@@ -3,12 +3,13 @@
 @{
     ViewBag.Title = "Details";
 }
+<link href="~/Content/bookTrade.css" rel="stylesheet" type="text/css" />
 
 
 <table>
     <tr>
         <td>
-            <div>
+            <div style="margin-top: 50px;">
                 <img src="~/imagens/@Html.DisplayFor(Model=> Model.Fotografia)"
             </div>
         </td>
@@ -22,7 +23,8 @@
                 <div style="font-family:Arial; font-size:20px; padding-left:100px;">
                     de
                     <b>
-                        @Html.DisplayFor(model => model.Autores.Nome)
+                        @Html.ActionLink(Model.Autores.Nome, "Details", "Autors", new { Id = Model.Autores.Id }, null)
+
                     </b>
 
                 </div>
@@ -41,8 +43,8 @@
                     @Html.DisplayFor(model => model.NumeroDePaginas)
                 </div>
 
-                <div style="font-family:Arial; font-size:20px; padding-left:100px; padding-top: 50px;">
-                    <b>Sinopse:</b>
+                <div style="font-family:Arial; font-size:20px; padding-left:100px; padding-top: 50px; text-align:justify;">
+                    <b>Sinopse</b></br>
                     @Html.DisplayFor(model => model.Sinopse)
                 </div>
             </div>
@@ -54,6 +56,6 @@
 </table>
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Voltar à Lista", "Index")
 </p>

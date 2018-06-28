@@ -8,6 +8,7 @@ namespace BookTrade.Models
 
     public partial class Comentarios
     {
+        //Chave Primária
         [Key]
         public int Id { get; set; }
 
@@ -16,6 +17,7 @@ namespace BookTrade.Models
 
         public DateTime Data { get; set; }
 
+        //Chaves Forasteiras da tabela Comentários
         [ForeignKey("Livros")]
         public int LivroId { get; set; }
 

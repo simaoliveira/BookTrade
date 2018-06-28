@@ -18,7 +18,8 @@ namespace BookTrade.Migrations
 
         protected override void Seed(BookTrade.Models.ApplicationDbContext context)
         {
-
+            //********Seeds*********
+            //utilizador
             var user = new List<Utilizador> {
                 new Utilizador {Id=1,DataNasc=new DateTime(1996,10,02),Email="simaoliveira@ipt.pt",NomeCompleto="Simao Pedro De Oliveira Moleiro"},
                 new Utilizador {Id=2,DataNasc=new DateTime(1996,05,03),Email="rafandreg@ipt.pt",NomeCompleto="Rafael Andre Campos Goncalves"},
@@ -73,6 +74,7 @@ namespace BookTrade.Migrations
                 }
             }
 
+            //Autores
             var autor = new List<Autor> {
                 new Autor {Id=1,Nome="Paulo Duarte", DataNasc=new DateTime(1979,03,14),Descricao="Paulo Duarte, sj. (1979 - Portimão) - Jesuíta, padre, coordenador da pastoral e professor no Colégio das Caldinhas (Sto. Tirso). São muitas as pessoas que acompanha diariamente: em aulas, em conversas, em celebração de missa e reconciliação. ¿A presença nas redes sociais e ocasionalmente em programas televisivos permite uma comunicação¿ ampla com a sociedade atual.",Fotografia="pauloduarte.jpg"},
                 new Autor {Id=2,Nome="Raul Minh'alma", DataNasc=new DateTime(1992,05,14),Descricao="Nasceu em 1992, é natural do Marco de Canaveses, formado em Engenharia Mecânica na Faculdade de Engenharia da Universidade do Porto. Começou a escrever poesia com dezassete anos e em 2011 lança o seu primeiro livro de poemas com o título",Fotografia="raulminhalma.jpg"},
@@ -84,6 +86,7 @@ namespace BookTrade.Migrations
             autor.ForEach(dd => context.Autor.AddOrUpdate(d => d.Nome, dd));
             context.SaveChanges();
 
+            //Categorias
             var categ = new List<Categorias> {
                 new Categorias {Id=1,Nome="Infantis e Juvenis"},
                 new Categorias {Id=2,Nome="Literatura"},
@@ -95,6 +98,7 @@ namespace BookTrade.Migrations
             categ.ForEach(dd => context.Categorias.AddOrUpdate(d => d.Nome, dd));
             context.SaveChanges();
 
+            //Livros
             var livro = new List<Livro> {
                 new Livro {Id=1,Titulo="O Caçador",Sinopse="A noite tinha acabado de cair, quando Sofia entra numa mansão nos arredores de Estocolmo, onde o seu cliente - um homem muito abastado que nunca viu - a espera. Talvez seja por isso que Sofia avança furtivamente, como um animal selvagem.",AnoLanc=2018,Editora="Porto Editora",Idioma="Português",NumeroDePaginas=568,AutorId=5,Fotografia="ocacador.jpg"},
                 new Livro {Id=2,Titulo="Uma Certa Forma de Vida",Sinopse="Neste livro, a autora começa por abordar temas que marcam a vida moderna, mas que a podem transformar negativamente, se não estivermos atentos. ",AnoLanc=2018,Editora="Clube do Autor",Idioma="Portugues",NumeroDePaginas=184,AutorId=4,Fotografia="umacertaformadevida.jpg"},
@@ -106,6 +110,7 @@ namespace BookTrade.Migrations
             livro.ForEach(dd => context.Livro.AddOrUpdate(d => d.Titulo, dd));
             context.SaveChanges();
 
+            //Comentários
             var coment = new List<Comentarios> {
                 new Comentarios {Id=1,Texto="Adoro! Muito Emocionante",Data=new DateTime(2016,10,03),LivroId=3,UtilizadorId=1},
                 new Comentarios {Id=2,Texto="Muito Bom, recomendo!",Data=new DateTime(2017,03,10),LivroId=4,UtilizadorId=5},

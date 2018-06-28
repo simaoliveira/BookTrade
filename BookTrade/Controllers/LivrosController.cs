@@ -11,7 +11,7 @@ using BookTrade.Models;
 
 namespace BookTrade.Controllers
 {
-    public class LivroesController : Controller
+    public class LivrosController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 

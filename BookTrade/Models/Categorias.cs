@@ -12,12 +12,14 @@ namespace BookTrade.Models
         {
             Livros = new HashSet<Livro>();
         }
+        //Chave Primária
         [Key]
         public int Id { get; set; }
 
         [Required]
         public string Nome { get; set; }
 
+        //Especifica que uma Categoria pode ter vários Livros
         public virtual ICollection<Livro> Livros { get; set; }
     }
 }

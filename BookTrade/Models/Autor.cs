@@ -12,6 +12,7 @@ namespace BookTrade.Models
         {
             Livros = new HashSet<Livro>();
         }
+        //Chave Primária
         [Key]
         public int Id { get; set; }
 
@@ -20,6 +21,7 @@ namespace BookTrade.Models
         public string Nome { get; set; }
 
         [Column(TypeName = "date")]
+        //formata a data para aparecer Ano/Mês/Dia
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime? DataNasc { get; set; }
 
@@ -28,6 +30,7 @@ namespace BookTrade.Models
 
         public string Fotografia { get; set; }
 
+        //Especifica que um autor pode ter vários Livros
         public virtual ICollection<Livro> Livros { get; set; }
     }
 }
