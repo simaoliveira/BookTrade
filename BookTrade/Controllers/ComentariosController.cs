@@ -37,7 +37,6 @@ namespace BookTrade.Controllers
         }
 
         // GET: Comentarios/Create
-        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.LivroId = new SelectList(db.Livro, "Id", "Titulo");
@@ -50,7 +49,6 @@ namespace BookTrade.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "Id,Texto,Data,LivroId,UtilizadorId")] Comentarios comentarios)
         {
             if (ModelState.IsValid)
@@ -66,7 +64,6 @@ namespace BookTrade.Controllers
         }
 
         // GET: Comentarios/Edit/5
-        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -88,7 +85,6 @@ namespace BookTrade.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "Id,Texto,Data,LivroId,UtilizadorId")] Comentarios comentarios)
         {
             if (ModelState.IsValid)
@@ -103,7 +99,6 @@ namespace BookTrade.Controllers
         }
 
         // GET: Comentarios/Delete/5
-        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -121,7 +116,6 @@ namespace BookTrade.Controllers
         // POST: Comentarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Comentarios comentarios = db.Comentarios.Find(id);

@@ -15,47 +15,38 @@
         </td>
         <td>
             <div>
-
-
-                <div style="font-family:Arial; font-size:30px; color:blue; font-weight:bold; margin-top:-35px; padding-left:100px;">
+                <div class="tituloLivros">
                     @Html.DisplayFor(model => model.Titulo)
                 </div>
-                <div style="font-family:Arial; font-size:20px; padding-left:100px;">
+                <div class="livrosInfo">
                     de
                     <b>
                         @Html.ActionLink(Model.Autores.Nome, "Details", "Autors", new { Id = Model.Autores.Id }, null)
-
-                    </b>
-
-                </div>
-                <div style="font-family:Arial; font-size:20px; padding-left:100px;">
+                    </b><br />
                     Editor:
                     @Html.DisplayFor(model => model.Editora)
-                </div>
-                <div style="font-family:Arial; font-size:20px; padding-left:100px;">
-                    <b>Lançado em:</b>
+                    <br /><b>
+                        Lançado em:
+                    </b>
                     @Html.DisplayFor(model => model.AnoLanc)
-                </div>
-                <div style="font-family:Arial; font-size:15px; padding-left:100px;">
-                    @Html.DisplayFor(model => model.Idioma)
                     <br />
-                    <b>Número de páginas: </b>
+                    @Html.DisplayFor(model => model.Idioma)
+                    <br /><b>
+                        Número de páginas:
+                    </b>
                     @Html.DisplayFor(model => model.NumeroDePaginas)
                 </div>
-
-                <div style="font-family:Arial; font-size:20px; padding-left:100px; padding-top: 50px; text-align:justify;">
-                    <b>Sinopse</b></br>
+                <div class="sinopse">
+                    <b>Sinopse</b><br>
                     @Html.DisplayFor(model => model.Sinopse)
                 </div>
             </div>
 
         </td>
-
     </tr>
-
 </table>
-
 <p>
     @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
     @Html.ActionLink("Voltar à Lista", "Index")
 </p>

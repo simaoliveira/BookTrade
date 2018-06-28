@@ -1,0 +1,47 @@
+﻿@model BookTrade.Models.Livro
+@{
+    ViewBag.Title = "About";
+}
+
+<h2 style="margin-top: 50px;">Sobre</h2>
+
+<link href="~/Content/bookTrade.css" rel="stylesheet" type="text/css" />
+
+<table>
+    <tr>
+        <td>
+            <div style="margin-top: 50px; ">
+                <img src="~/imagens/Fotografia.jpg" width="500" height="430" />
+            </div>
+        </td>
+        <td>
+            <div>
+                <div style="font-family:Arial; font-size:30px; font-weight:bold; margin-top:-35px; padding-left:100px;">
+                    Simão Moleiro
+                </div>
+                <div style="font-family:Arial; font-size:20px; padding-left:100px;">
+                    Aluno nº
+                    <b>
+                        19449
+                    </b>
+
+                </div>
+                <div style="font-family:Arial; font-size:20px; padding-left:100px;">
+                    Tecnologias da Internet II
+                </div>
+                <div style="font-family:Arial; font-size:20px; padding-left:100px;">
+                    <b>Engenharia Informática 2017/2018</b>
+
+                </div>
+            </div>
+
+        </td>
+
+    </tr>
+
+</table>
+
+<p>
+    @Html.ActionLink("Voltar à Lista", "Index")
+</p>
+

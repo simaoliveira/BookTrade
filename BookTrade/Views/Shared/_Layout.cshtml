@@ -11,11 +11,22 @@
 <body>
     <nav class="navbar navbar-expand navbar-dark fixed-top bg-dark" style="padding-top:10px; margin:0px;">
         <div class="container">
-            @Html.ActionLink("Book Trade", "Index", "Livros", new { area = "" }, new { @class = "navbar-brand" })
-            <div >
-                <ul class="nav navbar-nav mr-auto">
+            <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        @Html.ActionLink("Book Trade", "Index", "Livros", new { area = "" }, new { @class = "navbar-brand" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Sobre", "About", "Livros", new { area = "" }, new { @class = "navbar-brand" })
+                    </li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+            </div>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        @Html.Partial("_LoginPartial")
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>

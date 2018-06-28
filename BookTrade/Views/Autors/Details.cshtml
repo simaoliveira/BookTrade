@@ -7,7 +7,7 @@
     <tr>
         <td>
             <div>
-                <img src="~/imagens/@Html.DisplayFor(Model=> Model.Fotografia)"
+                <img src="~/imagens/@Html.DisplayFor(Model=> Model.Fotografia)" style="object-fit:cover" width="480" height="330"/>
             </div>
         </td>
         <td>
@@ -36,5 +36,6 @@
 </table>
 <p>
     @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
     @Html.ActionLink("Voltar à Lista", "Index")
 </p>

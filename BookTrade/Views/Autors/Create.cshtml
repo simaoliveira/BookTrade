@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Criar Novo Autor</h2>
+<h2 style="margin-top: 50px;">Criar Novo Autor</h2>
 
 
 @using (Html.BeginForm()) 
@@ -44,7 +44,7 @@
         <div class="col-md-10">
             @* adição do objeto para fazer o file upload de uma fotografia *@
             @*@Html.EditorFor(model => model.Fotografia, new { htmlAttributes = new { @class = "form-control" } })*@
-            <input type="file" name="uploadFotografia"
+            <input type="file" name="Fotografia"
                    style="color:blue;" accept=".jpg" />
 
             @Html.ValidationMessageFor(model => model.Fotografia, "", new { @class = "text-danger" })

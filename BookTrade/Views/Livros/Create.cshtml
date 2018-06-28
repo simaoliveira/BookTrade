@@ -4,10 +4,10 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Adicionar um novo Livro</h2>
+<h2 style="margin-top: 50px;">Adicionar um novo Livro</h2>
 
 
-@using (Html.BeginForm("Adicionar", "Livros", FormMethod.Post, new { enctype = "multipart/form-data" })) {
+@using (Html.BeginForm("Create", "Livros", FormMethod.Post, new { enctype = "multipart/form-data" })) {
     @Html.AntiForgeryToken()
 
 <div class="form-horizontal">

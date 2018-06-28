@@ -5,7 +5,47 @@
     justify-content: space-between;
 }
 
-.infom{
-    font-family:'Segoe UI';
-    font-size:16px;
+.infom {
+    font-family: 'Segoe UI';
+    font-size: 16px;
+}
+
+/*configuração do conteudo pela página*/
+.layout {
+    width: 18%;
+    height: 313px;
+    overflow-y: inherit;
+    margin-top: 110px;
+    margin-bottom: 5px;
+    min-width: 150px;
+    border: 1px;
+}
+
+/*Imagens página inicial*/
+.imgFilmes {
+    width: 100%;
+    min-height: 100%;
+    height: auto;
+    margin-top: -65px;
+}
+
+.tituloLivros {
+    font-family: Arial;
+    font-size: 30px;
+    color: blue;
+    font-weight: bold;
+    margin-top: -35px;
+    padding-left: 100px;
+}
+.livrosInfo {
+    font-family: Arial;
+    font-size: 20px;
+    padding-left: 100px;
+}
+.sinopse {
+    font-family: Arial;
+    font-size: 20px;
+    padding-left: 100px;
+    padding-top: 50px;
+    text-align: justify;
 }

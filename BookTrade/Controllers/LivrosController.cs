@@ -11,18 +11,21 @@ using BookTrade.Models;
 
 namespace BookTrade.Controllers
 {
+    [Authorize(Roles = "Livros,Admin")]
     public class LivrosController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Livroes
+        [AllowAnonymous]
+        // GET: Livros
         public ActionResult Index()
         {
             var livro = db.Livro.Include(l => l.Autores);
             return View(livro.ToList());
         }
 
-        // GET: Livroes/Details/5
+        [AllowAnonymous]
+        // GET: Livros/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,7 +40,7 @@ namespace BookTrade.Controllers
             return View(livro);
         }
 
-        // GET: Livroes/Create
+        // GET: Livros/Create
         [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
@@ -46,7 +49,7 @@ namespace BookTrade.Controllers
             return View();
         }
 
-        // POST: Livroes/Create
+        // POST: Livros/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -73,8 +76,7 @@ namespace BookTrade.Controllers
             return View(livro);
         }
 
-        // GET: Livroes/Edit/5
-        [Authorize(Roles = "Admin")]
+        // GET: Livros/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,12 +92,11 @@ namespace BookTrade.Controllers
             return View(livro);
         }
 
-        // POST: Livroes/Edit/5
+        // POST: Livros/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,Editora,Idioma,NumeroDePaginas,AutorId,Fotografia")] Livro livro)
         {
             if (ModelState.IsValid)
@@ -108,7 +109,7 @@ namespace BookTrade.Controllers
             return View(livro);
         }
 
-        // GET: Livroes/Delete/5
+        // GET: Livros/Delete/5
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
@@ -124,7 +125,7 @@ namespace BookTrade.Controllers
             return View(livro);
         }
 
-        // POST: Livroes/Delete/5
+        // POST: Livros/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Admin")]
@@ -144,6 +145,11 @@ namespace BookTrade.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        // GET: About
+        public ActionResult About() {
+            return View();
         }
     }
 }

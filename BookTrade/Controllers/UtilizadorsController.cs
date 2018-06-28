@@ -36,7 +36,6 @@ namespace BookTrade.Controllers
         }
 
         // GET: Utilizadors/Create
-        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -47,7 +46,6 @@ namespace BookTrade.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "Id,UserName,NomeCompleto,DataNasc,Email")] Utilizador utilizador)
         {
             if (ModelState.IsValid)
@@ -61,7 +59,6 @@ namespace BookTrade.Controllers
         }
 
         // GET: Utilizadors/Edit/
-        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -81,7 +78,6 @@ namespace BookTrade.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "Id,UserName,NomeCompleto,DataNasc,Email")] Utilizador utilizador)
         {
             if (ModelState.IsValid)
@@ -94,7 +90,6 @@ namespace BookTrade.Controllers
         }
 
         // GET: Utilizadors/Delete/5
-        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -112,7 +107,6 @@ namespace BookTrade.Controllers
         // POST: Utilizadors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Utilizador utilizador = db.Utilizador.Find(id);

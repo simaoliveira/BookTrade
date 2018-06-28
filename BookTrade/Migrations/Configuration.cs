@@ -32,47 +32,7 @@ namespace BookTrade.Migrations
             context.SaveChanges();
 
 
-            var storeR = new RoleStore<IdentityRole>(context);
-            var managerR = new RoleManager<IdentityRole>(storeR);
-
-            if (!context.Roles.Any(r => r.Name == "Admin")) {
-                var role = new IdentityRole { Name = "Admin" };
-
-                managerR.Create(role);
-            }
-            if (!context.Roles.Any(r => r.Name == "Viewer")) {
-                var role = new IdentityRole { Name = "Viewer" };
-
-                managerR.Create(role);
-            }
-
-            /////////////////////////// USERS ///////////////////////////////////
-            var store = new UserStore<ApplicationUser>(context);
-            var manager = new UserManager<ApplicationUser>(store);
-            /////////////////////////// ADMIN ///////////////////////////////////
-            var us = user[0];
-            if (!context.Users.Any(u => u.UserName == us.Email)) {
-                var u = new ApplicationUser {
-                    UserName = us.Email,
-                    Email = us.Email
-                };
-
-                manager.Create(u, "123qweQWE#");
-                manager.AddToRole(u.Id, "Admin");
-            }
-
-            for (int i = 1; i < user.Count(); i++) {
-                var us2 = user[i];
-                if (!context.Users.Any(u => u.UserName == us2.Email)) {
-                    var u = new ApplicationUser {
-                        UserName = us2.Email,
-                        Email = us2.Email
-                    };
-
-                    manager.Create(u, "123qweQWE#");
-                    manager.AddToRole(u.Id, "Viewer");
-                }
-            }
+           
 
             //Autores
             var autor = new List<Autor> {

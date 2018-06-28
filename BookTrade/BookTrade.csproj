@@ -186,12 +186,15 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LivrosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RolesAdminController.cs" />
+    <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\UtilizadorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdminViewModels.cs" />
     <Compile Include="Models\Autor.cs" />
     <Compile Include="Models\Categorias.cs" />
     <Compile Include="Models\Comentarios.cs" />
@@ -215,6 +218,7 @@
     <Content Include="imagens\dameumdia.jpg" />
     <Content Include="imagens\deuscomotu.jpg" />
     <Content Include="imagens\emminusculas.jpg" />
+    <Content Include="imagens\Fotografia.jpg" />
     <Content Include="imagens\heathermorris.jpg" />
     <Content Include="imagens\helenasacaduracabral.jpg" />
     <Content Include="imagens\herbertohelder.jpg" />
@@ -297,6 +301,17 @@
     <Content Include="Views\Comentarios\Details.cshtml" />
     <Content Include="Views\Comentarios\Edit.cshtml" />
     <Content Include="Views\Comentarios\Index.cshtml" />
+    <Content Include="Views\Livros\About.cshtml" />
+    <Content Include="Views\RolesAdmin\Create.cshtml" />
+    <Content Include="Views\RolesAdmin\Delete.cshtml" />
+    <Content Include="Views\RolesAdmin\Details.cshtml" />
+    <Content Include="Views\RolesAdmin\Edit.cshtml" />
+    <Content Include="Views\RolesAdmin\Index.cshtml" />
+    <Content Include="Views\UserAdmin\Create.cshtml" />
+    <Content Include="Views\UserAdmin\Delete.cshtml" />
+    <Content Include="Views\UserAdmin\Details.cshtml" />
+    <Content Include="Views\UserAdmin\Edit.cshtml" />
+    <Content Include="Views\UserAdmin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -6,22 +6,16 @@
 <link href="~/Content/bookTrade.css" rel="stylesheet" type="text/css" />
 
 
-<div  style="display: flex; flex-wrap: wrap; justify-content: space-between;" >
+<div class="init">
     @foreach (var item in Model) {
-    <div style="width: 18%; height: 313px; overflow-y:inherit; margin-top: 110px; margin-bottom: 5px; min-width: 150px; border:1px;">
-
-        <img src="~/imagens/@item.Fotografia" style="width: 100%; min-height: 100%; height: auto; margin-top:-65px;" />
-       
-            <div style="margin-top:10px;" >
+        <div class="layout">
+            <img src="~/imagens/@item.Fotografia" class="imgFilmes" />
+            <div style="margin-top:10px;">
                 <b>@Html.ActionLink(item.Titulo, "Details", "Livros", new { Id = item.Id }, null)</b> <br />
                 De <b>@Html.ActionLink(item.Autores.Nome, "Details", "Autors", new { Id = item.Autores.Id }, null)</b>
             </div>
-
-
-    </div>
+        </div>
     }
-
-
 </div>
 <p>
     @Html.ActionLink("Adicionar Novo Livro", "Create")
