@@ -18,5 +18,12 @@
     }
 </div>
 <p>
-    @Html.ActionLink("Adicionar Novo Livro", "Create")
+    @if (User.IsInRole("Admin")) {
+        @Html.ActionLink("Adicionar Novo Livro", "Create", null, new { @class = "btn btn-outline-primary btn-large" })
+
+        @*Esconder botão quando admin não tem login feito*@
+        @Html.AntiForgeryToken()
+        <input type="hidden" name="id" value="item.Id" />
+    }
+    
 </p>

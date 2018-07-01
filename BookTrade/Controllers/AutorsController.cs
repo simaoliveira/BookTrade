@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.IO;
@@ -37,6 +36,7 @@ namespace BookTrade.Controllers
         }
 
         // GET: Autors/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -47,19 +47,26 @@ namespace BookTrade.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,DataNasc,Descricao,Fotografia")] Autor autor, HttpPostedFileBase uploadFotografia)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Create([Bind(Include = "Id,Nome,DataNasc,Descricao,AutorFotografia")] Autor autor, HttpPostedFileBase AutorFotografia)
         {
+            if (AutorFotografia != null) {
+                autor.AutorFotografia = AutorFotografia.FileName;
+            }
             if (ModelState.IsValid)
             {
                 db.Autor.Add(autor);
                 db.SaveChanges();
+
+                AutorFotografia.SaveAs(Path.Combine(Server.MapPath("~/imagens/" + AutorFotografia.FileName)));
+
                 return RedirectToAction("Index");
             }
-
             return View(autor);
         }
 
         // GET: Autors/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,7 +86,8 @@ namespace BookTrade.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,DataNasc,Descricao,Fotografia")] Autor autor)
+        [Authorize(Roles = "Admin")]
+        public ActionResult Edit([Bind(Include = "Id,Nome,DataNasc,Descricao,AutorFotografia")] Autor autor)
         {
             if (ModelState.IsValid)
             {
@@ -91,6 +99,7 @@ namespace BookTrade.Controllers
         }
 
         // GET: Autors/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -108,6 +117,7 @@ namespace BookTrade.Controllers
         // POST: Autors/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Autor autor = db.Autor.Find(id);

@@ -13,10 +13,10 @@
         <div class="container">
             <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
+                    <li class="navbar-head">
                         @Html.ActionLink("Book Trade", "Index", "Livros", new { area = "" }, new { @class = "navbar-brand" })
                     </li>
-                    <li class="nav-item">
+                    <li class="nav navbar-nav">
                         @Html.ActionLink("Sobre", "About", "Livros", new { area = "" }, new { @class = "navbar-brand" })
                     </li>
                 </ul>
@@ -31,9 +31,9 @@
         </div>
     </nav>
     <div class="container body-content">
-            @RenderBody()
-            <hr />
-  
+        @RenderBody()
+        <hr />
+
     </div>
 
     @Scripts.Render("~/bundles/jquery")

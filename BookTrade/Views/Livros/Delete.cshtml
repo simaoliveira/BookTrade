@@ -42,7 +42,7 @@
                     @Html.DisplayFor(model => model.NumeroDePaginas)
                 </div>
 
-                <div style="font-family:Arial; font-size:20px; padding-left:100px; padding-top: 50px;">
+                <div style="font-family:Arial; font-size:20px; padding-left:100px; padding-top: 50px; text-align:justify;">
                     <b>Sinopse:</b>
                     @Html.DisplayFor(model => model.Sinopse)
                 </div>
@@ -55,13 +55,15 @@
 
     <h3>Tem a certeza que pretende apagar?</h3>
 
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Voltar à Lista", "Index")
-        </div>
-    }
+    <tr>
+        <td>
+            @using (Html.BeginForm()) {
+                @Html.AntiForgeryToken()
+                <div class="form-actions no-color">
+                    <input type="submit" value="Apagar" class="btn btn-outline-danger" />
+                    @Html.ActionLink("Voltar à Lista", "Index", null, new { @class = "btn btn-outline-primary btn-large" })
+                </div>
+            }
+        </td>
+    </tr>
 </table>

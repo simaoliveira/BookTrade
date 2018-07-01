@@ -11,7 +11,7 @@
     <tr>
         <td>
             <div style="margin-top: 50px; ">
-                <img src="~/imagens/Fotografia.jpg" width="500" height="430" />
+                <img src="~/imagens/minha.jpg" style="object-fit:cover" width="500" height="430" />
             </div>
         </td>
         <td>
@@ -42,6 +42,6 @@
 </table>
 
 <p>
-    @Html.ActionLink("Voltar à Lista", "Index")
+    @Html.ActionLink("Voltar à Lista", "Index", null, new { @class = "btn btn-outline-primary btn-large" })
 </p>
 

@@ -11,12 +11,10 @@ using BookTrade.Models;
 
 namespace BookTrade.Controllers
 {
-    [Authorize(Roles = "Livros,Admin")]
     public class LivrosController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        [AllowAnonymous]
         // GET: Livros
         public ActionResult Index()
         {
@@ -24,7 +22,6 @@ namespace BookTrade.Controllers
             return View(livro.ToList());
         }
 
-        [AllowAnonymous]
         // GET: Livros/Details/5
         public ActionResult Details(int? id)
         {
@@ -71,12 +68,12 @@ namespace BookTrade.Controllers
                 return RedirectToAction("Index");
             }
 
-
             ViewBag.AutorId = new SelectList(db.Autor, "Id", "Nome", livro.AutorId);
             return View(livro);
         }
 
         // GET: Livros/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -97,6 +94,7 @@ namespace BookTrade.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "Id,Titulo,Sinopse,AnoLanc,Editora,Idioma,NumeroDePaginas,AutorId,Fotografia")] Livro livro)
         {
             if (ModelState.IsValid)

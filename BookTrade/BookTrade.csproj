@@ -186,8 +186,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LivrosController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\RolesAdminController.cs" />
-    <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Controllers\UtilizadorsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -218,7 +216,7 @@
     <Content Include="imagens\dameumdia.jpg" />
     <Content Include="imagens\deuscomotu.jpg" />
     <Content Include="imagens\emminusculas.jpg" />
-    <Content Include="imagens\Fotografia.jpg" />
+    <Content Include="imagens\minha.jpg" />
     <Content Include="imagens\heathermorris.jpg" />
     <Content Include="imagens\helenasacaduracabral.jpg" />
     <Content Include="imagens\herbertohelder.jpg" />

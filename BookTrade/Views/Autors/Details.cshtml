@@ -7,7 +7,7 @@
     <tr>
         <td>
             <div>
-                <img src="~/imagens/@Html.DisplayFor(Model=> Model.Fotografia)" style="object-fit:cover" width="480" height="330"/>
+                <img src="~/imagens/@Html.DisplayFor(Model=> Model.AutorFotografia)" style="object-fit:cover" width="480" height="330"/>
             </div>
         </td>
         <td>
@@ -35,7 +35,14 @@
 
 </table>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
-    @Html.ActionLink("Voltar à Lista", "Index")
+    @if (User.IsInRole("Admin")) {
+        @Html.ActionLink("Editar", "Edit", new { id = Model.Id }, new { @class = "btn btn-outline-dark btn-large" })
+        @Html.ActionLink("Apagar", "Delete", new { id = Model.Id }, new { @class = "btn btn-outline-danger btn-large" }){
+            @*Esconder botão quando admin não tem login feito*@
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="id" value="@Model.Id" />
+        }
+    }
+    @Html.ActionLink("Voltar à Lista", "Index", null, new { @class = "btn btn-outline-primary btn-large" })
+
 </p>

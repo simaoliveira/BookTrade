@@ -28,7 +28,7 @@ namespace BookTrade.Models
         [DataType(DataType.Text)]
         public string Descricao { get; set; }
 
-        public string Fotografia { get; set; }
+        public string AutorFotografia { get; set; }
 
         //Especifica que um autor pode ter vários Livros
         public virtual ICollection<Livro> Livros { get; set; }
