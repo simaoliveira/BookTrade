@@ -8,37 +8,30 @@ using System.Web;
 using System.Web.Mvc;
 using BookTrade.Models;
 
-namespace BookTrade.Controllers
-{
-    public class ComentariosController : Controller
-    {
+namespace BookTrade.Controllers {
+    public class ComentariosController : Controller {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Comentarios
-        public ActionResult Index()
-        {
+        public ActionResult Index() {
             var comentarios = db.Comentarios.Include(c => c.Livros).Include(c => c.Utilizadores);
             return View(comentarios.ToList());
         }
 
         // GET: Comentarios/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Details(int? id) {
+            if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Comentarios comentarios = db.Comentarios.Find(id);
-            if (comentarios == null)
-            {
+            if (comentarios == null) {
                 return HttpNotFound();
             }
             return View(comentarios);
         }
 
         // GET: Comentarios/Create
-        public ActionResult Create()
-        {
+        public ActionResult Create() {
             ViewBag.LivroId = new SelectList(db.Livro, "Id", "Titulo");
             ViewBag.UtilizadorId = new SelectList(db.Utilizador, "Id", "NomeCompleto");
             return View();
@@ -49,10 +42,8 @@ namespace BookTrade.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Texto,Data,LivroId,UtilizadorId")] Comentarios comentarios)
-        {
-            if (ModelState.IsValid)
-            {
+        public ActionResult Create([Bind(Include = "Id,Texto,Data,LivroId,UtilizadorId")] Comentarios comentarios) {
+            if (ModelState.IsValid) {
                 db.Comentarios.Add(comentarios);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -64,15 +55,12 @@ namespace BookTrade.Controllers
         }
 
         // GET: Comentarios/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Edit(int? id) {
+            if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Comentarios comentarios = db.Comentarios.Find(id);
-            if (comentarios == null)
-            {
+            if (comentarios == null) {
                 return HttpNotFound();
             }
             ViewBag.LivroId = new SelectList(db.Livro, "Id", "Titulo", comentarios.LivroId);
@@ -85,10 +73,8 @@ namespace BookTrade.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Texto,Data,LivroId,UtilizadorId")] Comentarios comentarios)
-        {
-            if (ModelState.IsValid)
-            {
+        public ActionResult Edit([Bind(Include = "Id,Texto,Data,LivroId,UtilizadorId")] Comentarios comentarios) {
+            if (ModelState.IsValid) {
                 db.Entry(comentarios).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -99,15 +85,12 @@ namespace BookTrade.Controllers
         }
 
         // GET: Comentarios/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
+        public ActionResult Delete(int? id) {
+            if (id == null) {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Comentarios comentarios = db.Comentarios.Find(id);
-            if (comentarios == null)
-            {
+            if (comentarios == null) {
                 return HttpNotFound();
             }
             return View(comentarios);
@@ -116,18 +99,15 @@ namespace BookTrade.Controllers
         // POST: Comentarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
+        public ActionResult DeleteConfirmed(int id) {
             Comentarios comentarios = db.Comentarios.Find(id);
             db.Comentarios.Remove(comentarios);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing) {
                 db.Dispose();
             }
             base.Dispose(disposing);

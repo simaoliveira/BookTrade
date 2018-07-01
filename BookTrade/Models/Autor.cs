@@ -1,15 +1,12 @@
-namespace BookTrade.Models
-{
+namespace BookTrade.Models {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Autor
-    {
-        public Autor()
-        {
+    public partial class Autor {
+        public Autor() {
             Livros = new HashSet<Livro>();
         }
         //Chave Primária
@@ -17,7 +14,6 @@ namespace BookTrade.Models
         public int Id { get; set; }
 
         [Required]
-
         public string Nome { get; set; }
 
         [Column(TypeName = "date")]

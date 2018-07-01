@@ -5,17 +5,17 @@
 }
 
 <link href="~/Content/bookTrade.css" rel="stylesheet" type="text/css" />
-
 <h2 style="margin-top: 50px;">Autores</h2>
 <div class="init">
     @foreach (var item in Model) {
-    <div class="layout" style="width: 28%;margin-top:50px">
+        <div class="layout" style="width: 28%;margin-top:50px">
+            @*Mostrar Fotografia do autor*@
             <img src="~/imagens/@item.AutorFotografia" style="object-fit:cover" width="300" height="280" />
+            @*Mostrar Nome do Autor*@
             <div style="margin-top:10px;">
-                @Html.DisplayFor(modelItem => item.Nome)
+                <b>@Html.ActionLink(item.Nome, "Details", "Autors", new { Id = item.Id }, null)</b>
             </div>
             <div>
-                @Html.ActionLink("Detalhes", "Details", new { id = item.Id }, new { @class = "btn btn-outline-primary btn-large" })
                 @if (User.IsInRole("Admin")) {
                     @Html.ActionLink("Editar", "Edit", new { id = item.Id }, new { @class = "btn btn-outline-dark btn-large" })
                     @Html.ActionLink("Apagar", "Delete", new { id = item.Id }, new { @class = "btn btn-outline-danger btn-large" })
@@ -24,14 +24,13 @@
                     <input type="hidden" name="id" value="item.Id" />
                 }
             </div>
-    </div>
+        </div>
     }
 </div>
 <p style="margin-top:50px">
 
     @if (User.IsInRole("Admin")) {
-        @Html.ActionLink("Adicionar Novo Livro", "Create", null, new { @class = "btn btn-outline-primary btn-large" })
-
+        @Html.ActionLink("Adicionar Novo Autor", "Create", null, new { @class = "btn btn-outline-primary btn-large" })
         @*Esconder botão quando admin não tem login feito*@
         @Html.AntiForgeryToken()
         <input type="hidden" name="id" value="item.Id" />

@@ -3,10 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>Book Trade</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <nav class="navbar navbar-expand navbar-dark fixed-top bg-dark" style="padding-top:10px; margin:0px;">
@@ -17,8 +16,17 @@
                         @Html.ActionLink("Book Trade", "Index", "Livros", new { area = "" }, new { @class = "navbar-brand" })
                     </li>
                     <li class="nav navbar-nav">
+                        @if (User.IsInRole("Admin")) {
+                            @Html.ActionLink("Autores", "Index", "Autors", new { area = "" }, new { @class = "navbar-brand" })
+                            @*Esconder botão quando admin não tem login feito*@
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="id" value="item.Id" />
+                        }
+                    </li>
+                    <li class="nav navbar-nav">
                         @Html.ActionLink("Sobre", "About", "Livros", new { area = "" }, new { @class = "navbar-brand" })
                     </li>
+
                 </ul>
             </div>
             <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
@@ -33,9 +41,7 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

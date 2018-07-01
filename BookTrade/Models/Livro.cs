@@ -1,15 +1,12 @@
-namespace BookTrade.Models
-{
+namespace BookTrade.Models {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Livro
-    {
-        public Livro()
-        {
+    public partial class Livro {
+        public Livro() {
             Comentarios = new HashSet<Comentarios>();
             Categorias = new HashSet<Categorias>();
         }

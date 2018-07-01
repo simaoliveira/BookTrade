@@ -5,13 +5,9 @@
 }
 
 <h2 style="margin-top: 50px;">Adicionar um novo Livro</h2>
-
-
 @using (Html.BeginForm("Create", "Livros", FormMethod.Post, new { enctype = "multipart/form-data" })) {
     @Html.AntiForgeryToken()
-
     <div class="form-horizontal">
-        <h4>Livro</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -21,7 +17,6 @@
                 @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Sinopse, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -29,15 +24,13 @@
                 @Html.ValidationMessageFor(model => model.Sinopse, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.AnoLanc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Ano de Lançamento</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.AnoLanc, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.AnoLanc, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Editora, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -45,7 +38,6 @@
                 @Html.ValidationMessageFor(model => model.Editora, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Idioma, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -53,15 +45,13 @@
                 @Html.ValidationMessageFor(model => model.Idioma, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.NumeroDePaginas, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Número de Páginas</label>
             <div class="col-md-10">
                 @Html.EditorFor(model => model.NumeroDePaginas, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.NumeroDePaginas, "", new { @class = "text-danger" })
             </div>
         </div>
-
         @*adiciona imagem do livro *@
         <div class="form-group">
             @Html.LabelFor(model => model.Fotografia, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -69,19 +59,16 @@
                 @* adição do objeto para fazer o file upload de uma fotografia *@
                 <input type="file" name="Fotografia"
                        style="color:blue;" accept=".jpg" />
-
                 @Html.ValidationMessageFor(model => model.Fotografia, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
-            @Html.LabelFor(model => model.AutorId, "AutorId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-md-2">Autor</label>
             <div class="col-md-10">
                 @Html.DropDownList("AutorId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.AutorId, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Categorias, htmlAttributes: new { @class = "control-label col-md-3" })
             <div class="col-md-12">
@@ -89,19 +76,14 @@
                 @Html.ValidationMessageFor(model => model.Categorias, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Gravar" class="btn btn-outline-success" />
+                @Html.ActionLink("Voltar à Lista", "Index", null, new { @class = "btn btn-outline-primary btn-large" })
             </div>
         </div>
     </div>
 }
-
-<div style="padding-left: 13px;">
-    @Html.ActionLink("Voltar à Lista", "Index", null, new { @class = "btn btn-outline-primary btn-large" })
-</div>
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

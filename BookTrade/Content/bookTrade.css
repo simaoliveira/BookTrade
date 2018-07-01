@@ -1,7 +1,6 @@
-﻿
-.init {
+﻿.init {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     justify-content: space-between;
 }
 
@@ -22,30 +21,67 @@
 }
 
 /*Imagens página inicial*/
-.imgFilmes {
+.imgLivros {
     width: 100%;
     min-height: 100%;
     height: auto;
     margin-top: -65px;
 }
-
+/*Estilo Titulo dos Livros na View Details e Delete*/
 .tituloLivros {
     font-family: Arial;
     font-size: 30px;
-    color: blue;
+    color: firebrick;
     font-weight: bold;
     margin-top: -35px;
     padding-left: 100px;
 }
+/*Estilo detalhes dos livros na View Details e Delete*/
 .livrosInfo {
     font-family: Arial;
     font-size: 20px;
     padding-left: 100px;
 }
+/*Estilo da sinopse dos Livros na View Details e Delete*/
 .sinopse {
     font-family: Arial;
     font-size: 20px;
     padding-left: 100px;
     padding-top: 50px;
     text-align: justify;
+}
+/*Estilo da descrição dos autores na View Details e Delete*/
+.descrAutor {
+    font-family: Arial;
+    font-size: 20px;
+    padding-left: 100px;
+    padding-top: 50px;
+    text-align: justify;
+}
+/*Estilo da data de nascimento dos autores na View Details e Delete*/
+.datanascAutor {
+    font-family: Arial;
+    font-size: 20px;
+    padding-left: 100px;
+}
+/*Estilo do nome dos autores na View Details e Delete*/
+.nomeAutor {
+    font-family: Arial;
+    font-size: 30px;
+    color: firebrick;
+    font-weight: bold;
+    margin-top: 35px;
+    padding-left: 100px;
+}
+/*Estilo da fotografia dos autores na View Details e Delete*/
+.imgAutor {
+    object-fit: contain;
+    width: 480px;
+    height: 330px;
+}
+/*Estilo o titulo da pagina nas View Login e Register*/
+.tituloPagina {
+    color: firebrick;
+    font-size: 25px;
+    margin-top: 50px;
 }

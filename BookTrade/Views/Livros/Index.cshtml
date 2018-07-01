@@ -4,12 +4,12 @@
     ViewBag.Title = "Index";
 }
 <link href="~/Content/bookTrade.css" rel="stylesheet" type="text/css" />
-
-
 <div class="init">
     @foreach (var item in Model) {
         <div class="layout">
-            <img src="~/imagens/@item.Fotografia" class="imgFilmes" />
+            @*Mostrar capas do livro*@
+            <img src="~/imagens/@item.Fotografia" class="imgLivros" />
+            @*Mostrar Nome e autor do livro*@
             <div style="margin-top:10px;">
                 <b>@Html.ActionLink(item.Titulo, "Details", "Livros", new { Id = item.Id }, null)</b> <br />
                 De <b>@Html.ActionLink(item.Autores.Nome, "Details", "Autors", new { Id = item.Autores.Id }, null)</b>
@@ -17,13 +17,13 @@
         </div>
     }
 </div>
-<p>
+<p style="margin-top:40px">
     @if (User.IsInRole("Admin")) {
         @Html.ActionLink("Adicionar Novo Livro", "Create", null, new { @class = "btn btn-outline-primary btn-large" })
-
+        @Html.ActionLink("Adicionar Novo Autor", "Create", "Autors", null, new { @class = "btn btn-outline-primary btn-large" })
+        @Html.ActionLink("Adicionar Nova Categoria", "Create", "Categorias", null, new { @class = "btn btn-outline-primary btn-large" })
         @*Esconder botão quando admin não tem login feito*@
         @Html.AntiForgeryToken()
         <input type="hidden" name="id" value="item.Id" />
     }
-    
 </p>

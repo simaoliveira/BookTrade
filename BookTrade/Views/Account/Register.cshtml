@@ -3,10 +3,10 @@
     ViewBag.Title = "Register";
 }
 
-<h2 style="color:blue; font-size:25px; margin-top: 50px; ">Criar Nova Conta</h2>
+<link href="~/Content/bookTrade.css" rel="stylesheet" type="text/css" />
+<h2 class="tituloPagina">Criar Nova Conta</h2>
 @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" })) {
     @Html.AntiForgeryToken()
-
     <hr />
     @Html.ValidationSummary("", new { @class = "text-danger" })
     <div class="form-group">

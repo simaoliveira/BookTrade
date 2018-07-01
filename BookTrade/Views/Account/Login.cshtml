@@ -4,7 +4,8 @@
     ViewBag.Title = "Log in";
 }
 
-<h2 style="color:blue; font-size:25px; margin-top: 50px; ">@ViewBag.Title</h2><br />
+<link href="~/Content/bookTrade.css" rel="stylesheet" type="text/css" />
+<h2 class="tituloPagina">@ViewBag.Title</h2><br />
 <div class="row">
     @*estilo email*@
     <div class="col-md-6">
@@ -14,7 +15,6 @@
                 <div class="form-group">
                     <div class="col-md-10 col-md-offset-3">
                         <div style="margin-bottom: 25px" class="input-group">
-                            
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-group", @placeholder = "E-Mail" })
                         </div>
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
@@ -24,7 +24,6 @@
                 <div class="form-group">
                     <div class="col-md-10 col-md-offset-3">
                         <div style="margin-bottom: 25px" class="input-group">
-                           
                             @Html.PasswordFor(m => m.Password, new { @class = "form-control input-group", @placeholder = "Senha" })
                         </div>
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
@@ -34,7 +33,7 @@
                     <div class="col-md-offset-3 col-md-10">
                         <div class="checkbox">
                             @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
+                            Lembrar-me?
                         </div>
                     </div>
                 </div>

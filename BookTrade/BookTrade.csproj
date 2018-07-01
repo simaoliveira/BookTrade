@@ -213,19 +213,28 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="imagens\aartesubtil.jpg" />
+    <Content Include="imagens\afonsonoiteluar.jpg" />
+    <Content Include="imagens\aluadejoana.jpg" />
     <Content Include="imagens\dameumdia.jpg" />
     <Content Include="imagens\deuscomotu.jpg" />
+    <Content Include="imagens\elaprimeiro.jpg" />
     <Content Include="imagens\emminusculas.jpg" />
+    <Content Include="imagens\joeldicker.jpg" />
+    <Content Include="imagens\MariaTeresaGoncalves.jpg" />
+    <Content Include="imagens\markmanson.jpg" />
     <Content Include="imagens\minha.jpg" />
     <Content Include="imagens\heathermorris.jpg" />
     <Content Include="imagens\helenasacaduracabral.jpg" />
     <Content Include="imagens\herbertohelder.jpg" />
     <Content Include="imagens\larskepler.jpg" />
     <Content Include="imagens\ocacador.jpg" />
+    <Content Include="imagens\odesaparecimento.jpg" />
     <Content Include="imagens\pauloduarte.jpg" />
     <Content Include="imagens\raulminhalma.jpg" />
     <Content Include="imagens\tatuador.jpg" />
     <Content Include="imagens\umacertaformadevida.jpg" />
+    <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include=".bin\git.cmd" />

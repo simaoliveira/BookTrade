@@ -1,15 +1,12 @@
-namespace BookTrade.Models
-{
+namespace BookTrade.Models {
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Utilizador
-    {
-        public Utilizador()
-        {
+    public partial class Utilizador {
+        public Utilizador() {
             Comentarios = new HashSet<Comentarios>();
         }
         //Chave Primária
@@ -23,7 +20,7 @@ namespace BookTrade.Models
 
         [Column(TypeName = "date")]
         //formata a data para aparecer Ano/Mês/Dia
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode =true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime DataNasc { get; set; }
 
         [Required]
@@ -31,7 +28,7 @@ namespace BookTrade.Models
         public string Email { get; set; }
 
         public string Fotografia { get; set; }
-        
+
         //Especifica que um Utilizador pode ter vários Comentários
         public virtual ICollection<Comentarios> Comentarios { get; set; }
     }

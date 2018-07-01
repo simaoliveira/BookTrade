@@ -4,18 +4,18 @@
 }
 
 <h2 style="margin-top: 50px;">Sobre</h2>
-
 <link href="~/Content/bookTrade.css" rel="stylesheet" type="text/css" />
-
 <table>
     <tr>
         <td>
             <div style="margin-top: 50px; ">
+                @*Mostrar imagem do autor do trabalho*@
                 <img src="~/imagens/minha.jpg" style="object-fit:cover" width="500" height="430" />
             </div>
         </td>
         <td>
             <div>
+                @*Mostrar dados do autor do trabalho*@
                 <div style="font-family:Arial; font-size:30px; font-weight:bold; margin-top:-35px; padding-left:100px;">
                     Simão Moleiro
                 </div>
@@ -24,23 +24,23 @@
                     <b>
                         19449
                     </b>
-
                 </div>
                 <div style="font-family:Arial; font-size:20px; padding-left:100px;">
                     Tecnologias da Internet II
                 </div>
                 <div style="font-family:Arial; font-size:20px; padding-left:100px;">
                     <b>Engenharia Informática 2017/2018</b>
-
+                </div>
+                @*Informação sobre o login do administrador*@
+                <div style="font-size:20px; padding-left:100px;">
+                    <br>
+                    <b>Administrador:</b> simaoliveira@ipt.pt<br />
+                    <b>Password:</b> 123qweQWE#
                 </div>
             </div>
-
         </td>
-
     </tr>
-
 </table>
-
 <p>
     @Html.ActionLink("Voltar à Lista", "Index", null, new { @class = "btn btn-outline-primary btn-large" })
 </p>
